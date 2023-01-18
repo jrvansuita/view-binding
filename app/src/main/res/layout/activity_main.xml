@@ -9,7 +9,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/purple_200"
+        android:background="@color/teal_700"
         android:gravity="top|center_horizontal"
         android:padding="18dp"
         android:text="@string/main_activity"
