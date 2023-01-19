@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.vansuita.viewbinding.sample"
-        minSdk 24
+        minSdk 33
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -30,16 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-    implementation project(path: ':view-binding')
+    implementation project(path: ':library')
 
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
 }
