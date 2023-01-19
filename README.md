@@ -7,9 +7,11 @@ This is an [**Android**](https://developer.android.com) library. It makes your l
 
 -----
 
-### Binding on Activity
+### Usage on Activity
 
-> Yes, the ```viewBinding()``` method will bind the layout for you.
+<details open><summary>Binding</summary>
+
+> Yes, the ```viewBinding()``` method will bind to the root view for you.
 
 ```Kotlin
 
@@ -19,41 +21,52 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 }
 
 ```
+</details>
 
-### Inflating on Activity
+<details><summary>Inflating</summary>
 
-> You can access the inflated view using the ```root``` property as usual
-
+> You don't need to set the layout calling ```setContentView()```. It will be done automatically.
 ```Kotlin
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding by viewBinding<ActivityMainBinding>(ViewBindingMethod.INFLATE)
+    private val binding : ActivityMainBinding by viewBinding(ViewBindingMethod.INFLATE)
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-      super.onCreate(savedInstanceState)
-      setContentView(binding.root)
-    }
 }
 
 ```
+</details>
+    
+### Usage on Fragment
 
-
-
-### Implementation from Fragment
-
-> Yes, you don't need to call the ```setContentView()``` method anymore. 
+<details><summary>Binding</summary>
 
 ```Kotlin
-
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-    private val binding : ActivityMainBinding by viewBinding()
+ 
+> The ```viewBinding()``` method will track the fragment view lifecycle and destroy the ViewBinding instance for you.
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-      super.onCreate(savedInstanceState)
-     //setContentView(binding.root)
-    }
-}
+class MyFragment : Fragment(R.layout.fragment_layout) {
 
+    private val binding by viewBinding<FragmentLayoutBinding>()
+    
+}
 ```
+</details>
+
+<details><summary>Inflating</summary>
+
+> Using this way, it gives you the ```onCreateView```
+    
+```Kotlin
+class MyFragment : Fragment() {
+
+    private val binding by viewBinding<FragmentLayoutBinding>(ViewBindingMethod.INFLATE)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = binding.root
+}
+```
+</details>
