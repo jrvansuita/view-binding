@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -10,12 +11,14 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 33
+        aarMetadata {
+            minCompileSdk = 24
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
         }
     }
     compileOptions {
@@ -28,10 +31,61 @@ android {
     buildFeatures {
         viewBinding true
     }
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.vansuita'
+            artifactId = 'view-binding'
+            version = '1.0'
+
+            afterEvaluate {
+                from components.release
+            }
+
+            pom {
+                name = "ViewBinding"
+                description = "The viewBinding method utility using Kotlin property delegation"
+                url = "https://github.com/jrvansuita/ViewBinding"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "jnrvans"
+                        name = "Junior Vansuita"
+                        email = "vansuita.jr@gmail.com"
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git@github.com:jrvansuita/ViewBinding.git'
+                    developerConnection = 'scm:git:ssh://example.com/my-library.git'
+                    url = 'https://github.com/jrvansuita/ViewBinding.git'
+                }
+            }
+
+            repositories {
+                maven {
+                    // change URLs to point to your repos, e.g. http://my.org/repo
+                    def releasesRepoUrl = layout.buildDirectory.dir('repos/releases')
+                    def snapshotsRepoUrl = layout.buildDirectory.dir('repos/snapshots')
+                    url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+                }
+            }
+        }
+    }
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'com.google.android.material:material:1.7.0'
+    api 'androidx.activity:activity-ktx:1.6.1'
+    api 'androidx.fragment:fragment-ktx:1.5.5'
 }

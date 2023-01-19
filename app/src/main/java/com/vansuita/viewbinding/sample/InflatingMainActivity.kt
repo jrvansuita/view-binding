@@ -7,14 +7,14 @@ import com.vansuita.viewbinding.ViewBindingMethod
 import com.vansuita.viewbinding.sample.databinding.ActivityMainBinding
 import com.vansuita.viewbinding.viewBinding
 
-//Inflating Example
 class InflatingMainActivity : AppCompatActivity() {
 
 	private val binding by viewBinding<ActivityMainBinding>(ViewBindingMethod.INFLATE)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setContentView(binding.root)
+		//Not needed
+		//setContentView(binding.root)
 		bindListeners()
 	}
 

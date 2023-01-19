@@ -1,8 +1,8 @@
 package com.vansuita.viewbinding
 
 import android.view.ViewGroup
+import androidx.activity.ComponentActivity
 import androidx.annotation.MainThread
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
@@ -10,21 +10,24 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
 class ActivityViewBindingPropertyDelegate<T : ViewBinding>(
-	private val activity: AppCompatActivity,
+	private val activity: ComponentActivity,
 	private val viewBindingMethod: ViewBindingMethod,
 	private val bindingClass: Class<T>
-) : ReadOnlyProperty<AppCompatActivity, T>, DefaultLifecycleObserver {
+) : ReadOnlyProperty<ComponentActivity, T>, DefaultLifecycleObserver {
 
 	private var binding: T? = null
- 
+
 	@MainThread
 	override fun onCreate(owner: LifecycleOwner) {
 		super.onCreate(owner)
-		activity.setContentView(binding!!.root)
+
+		if (viewBindingMethod == ViewBindingMethod.INFLATE)
+			activity.setContentView(binding!!.root)
+
 		owner.lifecycle.removeObserver(this)
 	}
 
-	override fun getValue(thisRef: AppCompatActivity, property: KProperty<*>): T {
+	override fun getValue(thisRef: ComponentActivity, property: KProperty<*>): T {
 		if (binding == null) {
 			binding = when (viewBindingMethod) {
 				ViewBindingMethod.BIND -> bindingClass.bind(
