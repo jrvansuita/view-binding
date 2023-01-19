@@ -41,14 +41,11 @@ class MainActivity : AppCompatActivity() {
 
 <details><summary>Binding</summary>
 
-```Kotlin
- 
 > The ```viewBinding()``` method will track the fragment view lifecycle and destroy the ViewBinding instance for you.
-    
+```Kotlin
 class MyFragment : Fragment(R.layout.fragment_layout) {
 
     private val binding by viewBinding<FragmentLayoutBinding>()
-    
 }
 ```
 </details>
