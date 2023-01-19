@@ -38,7 +38,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.vansuita'
+                groupId = 'com.github.jrvansuita'
                 artifactId = 'view-binding'
                 version = '1.0'
             }
