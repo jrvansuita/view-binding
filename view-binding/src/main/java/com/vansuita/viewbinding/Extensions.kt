@@ -1,3 +1,5 @@
+@file:Suppress("RedundantVisibilityModifier", "unused")
+
 package com.vansuita.viewbinding
 
 import android.view.LayoutInflater
@@ -7,10 +9,10 @@ import androidx.annotation.RestrictTo
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-inline fun <reified T : ViewBinding> Fragment.viewBinding(viewBindingMethod: ViewBindingMethod = ViewBindingMethod.BIND) =
+public inline fun <reified T : ViewBinding> Fragment.viewBinding(viewBindingMethod: ViewBindingMethod = ViewBindingMethod.BIND) =
 	FragmentViewBindingPropertyDelegate(viewBindingMethod, T::class.java)
 
-inline fun <reified T : ViewBinding> ComponentActivity.viewBinding(viewBindingMethod: ViewBindingMethod = ViewBindingMethod.BIND) =
+public inline fun <reified T : ViewBinding> ComponentActivity.viewBinding(viewBindingMethod: ViewBindingMethod = ViewBindingMethod.BIND) =
 	ActivityViewBindingPropertyDelegate(this, viewBindingMethod, T::class.java)
 
 @RestrictTo(RestrictTo.Scope.LIBRARY)

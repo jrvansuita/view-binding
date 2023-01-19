@@ -1,6 +1,8 @@
+@file:Suppress("RedundantVisibilityModifier", "unused")
+
 package com.vansuita.viewbinding
 
-enum class ViewBindingMethod {
+public enum class ViewBindingMethod {
 	BIND,
 	INFLATE
 }
