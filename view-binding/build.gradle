@@ -33,6 +33,11 @@ android {
     }
 }
 
+dependencies {
+    api 'androidx.activity:activity-ktx:1.6.1'
+    api 'androidx.fragment:fragment-ktx:1.5.5'
+}
+
 afterEvaluate {
     publishing {
         publications {
@@ -44,9 +49,4 @@ afterEvaluate {
             }
         }
     }
-}
-
-dependencies {
-    api 'androidx.activity:activity-ktx:1.6.1'
-    api 'androidx.fragment:fragment-ktx:1.5.5'
 }

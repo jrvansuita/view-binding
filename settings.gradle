@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "viewbinding"
+rootProject.name = "view-binding"
 include ':app'
-include ':library'
+include ':view-binding'
