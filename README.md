@@ -7,7 +7,9 @@ This is an [**Android**](https://developer.android.com) library. It makes your l
 
 -----
 
-### Usage on Activity
+</br>
+
+## Usage on Activity
 
 <details open><summary>Binding</summary>
 
@@ -37,7 +39,9 @@ class MainActivity : AppCompatActivity() {
 ```
 </details>
     
-### Usage on Fragment
+</br>
+    
+## Usage on Fragment
 
 <details><summary>Binding</summary>
 
@@ -67,3 +71,15 @@ class MyFragment : Fragment() {
 }
 ```
 </details>
+
+</br>
+
+## Installation
+Add the following dependency to your `build.gradle` file:
+```groovy
+dependencies {
+    implementation 'com.github.jrvansuita:view-binding:1.0.2'
+}
+```
+> Don't forget to add the JitPack maven repository to the list of repositories: `maven { url "https://jitpack.io" }`
+
