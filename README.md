@@ -2,7 +2,7 @@
 
 # View Binding
 
-This is an [**Android**](https://developer.android.com) library. It makes your life easier by reducing boilerplate code and avoiding redudante lines of code when are using the [ViewBinding](https://developer.android.com/topic/libraries/view-binding) feature on your Android project. This library show up in my head as an very good example on how the property delegation functionality from kotlin can help us.
+This is an [**Android**](https://developer.android.com) library. It makes your life easier by reducing boilerplate code and avoiding redundant lines of code when are using the [ViewBinding](https://developer.android.com/topic/libraries/view-binding) feature on your Android project. This library show up in my head as an very good example on how the property delegation functionality from kotlin can help us.
 
 
 -----
