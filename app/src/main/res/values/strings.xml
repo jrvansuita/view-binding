@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ViewBinding</string>
+    <string name="app_name">View Binding Sample</string>
     <string name="main_activity">Main Activity</string>
     <string name="binding_fragment_view">Binding Fragment View</string>
     <string name="inflating_fragment_view">Inflating Fragment View</string>

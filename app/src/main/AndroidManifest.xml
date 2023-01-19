@@ -8,7 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.ViewBinding">
         <activity
-            android:name=".InflatingMainActivity"
+            android:name=".BindingMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".BindingMainActivity" />
+        <activity android:name=".InflatingMainActivity" />
     </application>
 
 </manifest>
